@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactUs</title>
+
+    <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+    {{>header}}
+    <div id="contacts">
+        <div class="container">
+
+            <form action="/contactinfo" id="form">
+                <h3 style="text-align: center;">ContactUs</h3>
+                <br>
+                <label for="name">Name: </label>
+                <input type="text" name="name" id="name" required><br><br>
+                <label for="email">Email: </label>
+                <input type="text" name="email" id="email" required><br><br>
+                <label for="issue">Write your query here: </label><br>
+                <textarea name="issue" cols="20" rows="5" style="margin-left: 45px;" required></textarea><br><br>
+                <button type="submit">Submit</button>
+                <br>
+
+            </form>
+
+        </div>
+
+{{>footer}}
+</body>
+
+</html>

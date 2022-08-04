@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Tetris</title>
+    <link href="main.css" rel="stylesheet">
+</head>
+
+<body>
+    {{>header}}
+    <audio src="/style/punch-deck-brazilian-street-fight.mp3" autoplay>
+        <p>If you are reading this, it is because your browser does not support the audio element. </p>
+        <embed src="/style/punch-deck-brazilian-street-fight.mp3" width="180" height="90" hidden="true" />
+    </audio>
+    <div id="fb-root"></div>
+    <div class="container">
+        <h1 class="ml13">Tetris Game
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+
+        </h1>
+        <script>
+            var textWrapper = document.querySelector('.ml13');
+            textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+            anime.timeline({ loop: true })
+                .add({
+                    targets: '.ml13 .letter',
+                    translateY: [100, 0],
+                    translateZ: 0,
+                    opacity: [0, 1],
+                    easing: "easeOutExpo",
+                    duration: 1400,
+                    delay: (el, i) => 300 + 30 * i
+                }).add({
+                    targets: '.ml13 .letter',
+                    translateY: [0, -100],
+                    opacity: [1, 0],
+                    easing: "easeInExpo",
+                    duration: 1200,
+                    delay: (el, i) => 100 + 30 * i
+                });
+
+
+        </script>
+
+
+        <div class="game-container">
+            <canvas width="200px" height="400px" id="grid-canvas" class="grid"></canvas>
+
+            <div class="controls-container">
+                <div id="score-container" class="score-container">0</div>
+
+                <div id="next-container" class="next-container">
+                    <canvas id="next-canvas" class="next-canvas" width="280px" height="80px"></canvas>
+                </div>
+
+                <!--<div class="options-container">-->
+
+
+                <div class="ah-container">
+                    <!--Aggregate Height-->
+                    <input id="g-ah" type="text" class="input-container" value="1" />
+                </div>
+
+                <div class="cl-container">
+                    <!--Complete Lines-->
+                    <input id="g-cl" type="text" class="input-container" value="1" />
+                </div>
+
+
+                <div class="h-container">
+                    <!-- Holes -->
+                    <input id="g-h" type="text" class="input-container" value="1" />
+                </div>
+
+
+                <div class="b-container">
+                    <!-- Bumpiness -->
+                    <input id="g-b" type="text" class="input-container" value="1" />
+                </div>
+
+            </div>
+
+
+        </div>
+        <a id="ai-button" class="start-ai-button">Run AI</a>
+        <a id="reset-button" class="reset-button">Reset</a>
+        <div class="temp" style="height: 100px;"></div>
+
+        <hr>
+
+
+
+
+        <div id="chartContainer" class="chart" style="top:80px;"></div>
+        <div id="chartContainer1" class="chart" style="top:190px;"></div>
+        <div id="chartContainer2" class="chart" style="top:300px;"></div>
+        <div id="chartContainer3" class="chart" style="top:410px;"></div>
+
+    </div>
+
+
+    <script>!function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+            if (!d.getElementById(id)) {
+                js = d.createElement(s);
+                js.id = id; js.src = p + '://platform.twitter.com/widgets.js';
+                fjs.parentNode.insertBefore(js, fjs);
+            }
+        }
+            (document, 'script', 'twitter-wjs');</script>
+
+    <script src="js/canvasjs.min.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/grid.js"></script>
+    <script src="js/piece.js"></script>
+    <script src="js/game_manager.js"></script>
+    <script src="js/random_piece_generator.js"></script>
+    <script src="js/ai.js"></script>
+    <script src="js/updater.js"></script>
+    <!--<a id="reset-button" class="reset-button" onclick="c.insertValue(100)">Insert</a>-->
+    <script>
+        var manager = new GameManager();
+        manager.actuate(manager.grid, manager.workingPiece);
+    </script>
+    <div>
+        {{>footer}}
+    </div>
+</body>
+
+
+
+</html>

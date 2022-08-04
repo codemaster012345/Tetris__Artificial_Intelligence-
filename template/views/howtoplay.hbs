@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to play</title>
+    <link rel="stylesheet" href="">
+</head>
+<style>
+    body {
+        background-image: url("ima1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .intro {
+        margin: auto;
+        width: 50%;
+        text-align: center;
+        padding: 10px;
+        color: rgb(255, 255, 255);
+        font-size: 30px;
+        /* background-color: aquamarine; */
+
+    }
+
+    .ai,
+    .manually,
+    .way { 
+        color: white;
+        margin: auto;
+        width: 50%;        
+        padding: 10px;
+        font-size: 25px;
+
+    }
+</style>
+
+<body>
+    {{>header}}
+    <div class="main">
+        <div class="intro">
+
+           <p class="ml13">
+            Welcome to tetris game. We are happy to see you!   
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+    
+         </p>
+            <script>
+                var textWrapper = document.querySelector('.ml13');
+                textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+    
+                anime.timeline({ loop: true })
+                    .add({
+                        targets: '.ml13 .letter',
+                        translateY: [100, 0],
+                        translateZ: 0,
+                        opacity: [0, 1],
+                        easing: "easeOutExpo",
+                        duration: 1400,
+                        delay: (el, i) => 300 + 30 * i
+                    }).add({
+                        targets: '.ml13 .letter',
+                        translateY: [0, -100],
+                        opacity: [1, 0],
+                        easing: "easeInExpo",
+                        duration: 1200,
+                        delay: (el, i) => 100 + 30 * i
+                    });
+    
+    
+            </script>
+
+ 
+        </div>
+        <div class="way">
+            <br> There are two ways to play this game: <br>
+            <br> 1. By using AI. <br>
+            <br> 2. By manually. <br>
+        </div>
+        <div class="manually">
+
+            <br> <b>Manually</b><br>
+            <p>
+                By using up: &uarr;, down: &darr;, left: &larr;, right: &rarr;
+                keys of keyborad you can play this game.
+            </p>
+        </div>
+
+        <div class="ai">
+          <b>AI</b>
+ <br>
+            By using artificial intelligence you can play this game.
+            To start AI you have to press RUN AI button.
+            To reset program you have to press RESET button.
+        </div>
+
+    </div>
+    <!-- {{>footer}} -->
+</body>
+
+</html>

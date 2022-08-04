@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="contact.css">
+{{>header}}
+<div id="supportUs">
+    <div class="container">
+        <form action="/pay" id="form">
+            <h3 style="text-align: center;">SupportUs</h3>
+            <br>
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" required><br><br>
+            <label for="email">Email: </label>
+            <input type="text" name="email" id="email" required><br><br>
+            <label for="issue">Mobile Number: </label><br>
+            <input type="number" id="mobilenumber" name="mobilenumber" required><br><br>
+            <button type="submit">Submit</button>
+            <br>
+
+
+        </form>
+    </div>
+</div>
+{{>footer}}

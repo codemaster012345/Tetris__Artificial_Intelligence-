@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+        background-image: url("ima1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .main {
+        font-family: arial;
+        font-size: 24px;
+        margin: auto;
+        width: 50%;
+        height: 200px;
+        /* Center child horizontally*/
+        display: flex;
+        justify-content: center;
+        color: white;
+       
+    }
+</style>
+
+<body>
+    {{>header1}}
+    <div class="main">
+        <form action="/registrationData">
+            {{#if msg}}
+            <p>Email Already Exists</p>
+            {{/if}}
+            {{#if msg1}}
+            <p>Registration has been completed. Go to login page and login.</p>
+            {{/if}}
+            {{#if msg3}}
+            <p>Password and confirm password not maching</p>
+            {{/if}}
+            <h2 class="visually-hidden">Sign Up</h2>
+            <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+            <div class="mb-3"><input type="email" class="form-control" name="email" placeholder="Email" required />
+            </div><br>
+            <div class="mb-3"><input type="password" class="form-control" name="password" placeholder="Password"
+                    required />
+            </div><br>
+            <div class="mb-3"><input type="password" class="form-control" name="password1"
+                    placeholder="Confirm Password" required />
+            </div><br>
+            <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Sign Up</button>
+            </div>
+
+            <a class="forgot" href="/login">Already account login here</a>
+
+
+
+        </form>
+    </div>
+    {{>footer}}
+</body>
+
+</html>
